@@ -33,4 +33,8 @@ public class ProductService {
              productRepository.restockInventory(id);
          }
     }
+
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
 }

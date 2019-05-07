@@ -34,5 +34,12 @@ public class ProductController {
          productService.updateProductCount(id,qty);
     }
 
+    @GetMapping("/products")
+    public List<Product> getAllProducts(){
+        return productService.getAllProducts();
+    }
+
+
+
 
 }
