@@ -16,7 +16,7 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public void saveProduct(Product product) {
+    public void addProduct(Product product) {
         productRepository.save(product);
     }
 
@@ -27,8 +27,8 @@ public class ProductService {
         return productRepository.findByCategoryAndSubCategory(category,sub_category);
     }
 
-    public void updateProductCount(Integer id) {
-         productRepository.updateProductCount(id);
+    public void updateProductCount(Integer id,int qty) {
+         productRepository.updateProductCount(id,qty);
          if(productRepository.findById(id).get().getCount()==0){
              productRepository.restockInventory(id);
          }

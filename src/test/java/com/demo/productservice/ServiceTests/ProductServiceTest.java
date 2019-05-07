@@ -30,10 +30,10 @@ public class ProductServiceTest {
     @Test
     public void saveProduct_savesTheProduct() {
         //arrange
-        Product product = new Product("blue men cotton shirt", "Men", "Shirts", 10.00, "M", 10);
+        Product product = new Product("blue men cotton shirt", "","Men", "Shirts", 10.00, "M", 10);
 
         //act
-        productService.saveProduct(product);
+        productService.addProduct(product);
 
         //assert
         verify(productRepository, times(1)).save(product);
@@ -41,6 +41,14 @@ public class ProductServiceTest {
 
     @Test
     public void findProductsByCategory_returnsProductsWithThatCategory() {
+        String category = "Men";
+        //act
+        productService.findByCategory(category);
+        //assert
+        verify(productRepository, times(1)).findByCategory(category);
+    }
+    @Test
+    public void findProductsByCategoryAndSubCategory_returnsProductsWithThatCategoryAndSubCategory() {
         String category = "Men";
         //act
         productService.findByCategory(category);

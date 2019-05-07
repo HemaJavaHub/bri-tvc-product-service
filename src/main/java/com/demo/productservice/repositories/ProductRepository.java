@@ -21,8 +21,8 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     List<Product> findByCategory(String category);
 
     @Modifying
-    @Query(value = "update product p set p.count = p.count-1 where p.id = id", nativeQuery = true)
-    void updateProductCount(@Param("id") Integer id);
+    @Query(value = "update product p set p.count = ?2 where p.id = ?1", nativeQuery = true)
+    void updateProductCount(@Param("id") Integer id, @Param("qty") int qty);
 
     @Modifying
     @Query(value = "update product p set p.count = 20 where p.id = id", nativeQuery = true)

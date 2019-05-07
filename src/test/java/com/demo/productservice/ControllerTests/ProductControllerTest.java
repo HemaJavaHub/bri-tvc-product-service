@@ -43,12 +43,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
         @Test
         public void postingProduct_savesTheProduct() throws Exception{
-            Product song = TestProducts.getProducts().get(0);
+            Product product = TestProducts.getProducts().get(0);
             MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/products")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(objectMapper.writeValueAsString(song));
+                    .content(objectMapper.writeValueAsString(product));
             mockMvc.perform(builder).andExpect(status().isOk());
-            verify(productService, times(1)).saveProduct(any(Product.class));
+            verify(productService, times(1)).addProduct(any(Product.class));
         }
 
         @Test
@@ -61,7 +61,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
             when(productService.findByCategory("Men")).thenReturn(products);
 
-            mockMvc.perform(MockMvcRequestBuilders.get("/products/Men"))
+            mockMvc.perform(MockMvcRequestBuilders.get("/products/categories/Men"))
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$", hasSize(3)))
                     .andExpect(jsonPath("$[0].category", is("Men")))
@@ -80,7 +80,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
             when(productService.findByCategoryAndSubCategory("Men","Shirts")).thenReturn(products);
 
-            mockMvc.perform(MockMvcRequestBuilders.get("/products/Men/Shirts"))
+            mockMvc.perform(MockMvcRequestBuilders.get("/products/categories/Men/sub/Shirts"))
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$", hasSize(2)))
                     .andExpect(jsonPath("$[0].category", is("Men")))

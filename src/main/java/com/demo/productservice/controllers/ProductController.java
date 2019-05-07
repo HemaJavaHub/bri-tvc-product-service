@@ -15,8 +15,8 @@ public class ProductController {
     ProductService productService;
 
     @PostMapping("/products")
-    public String postProduct(@RequestBody Product product){
-        productService.saveProduct(product);
+    public String addProduct(@RequestBody Product product){
+        productService.addProduct(product);
         return "saved";
     }
     @GetMapping("/products/categories/{category}")
@@ -30,8 +30,8 @@ public class ProductController {
     }
 
     @GetMapping("/products/{id}")
-    public void updateProductCount(@PathVariable Integer id){
-         productService.updateProductCount(id);
+    public void updateProductCount(@PathVariable Integer id,@PathVariable int qty){
+         productService.updateProductCount(id,qty);
     }
 
 

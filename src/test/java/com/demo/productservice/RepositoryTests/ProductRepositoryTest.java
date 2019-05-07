@@ -31,12 +31,21 @@ public class ProductRepositoryTest {
         assertThat(foundProduct.getCategory()).isEqualTo(product.getCategory());
     }
 
-    /*@Test
-    public void findSongByName_returnsSongsWithThatName(){
+    @Test
+    public void findProductByCategory_returnProductsWithThatCategory(){
         String category="Men";
 
         int size = productRepository.findByCategory(category).size();
         assertThat(size==3);
 
-    }*/
+    }
+    @Test
+    public void findProductByCategoryAndSubCategory_returnProductsWithThatCategoryAndSubCategory(){
+        String category="Men";
+        String sub_category="Shirts";
+
+        int size = productRepository.findByCategoryAndSubCategory(category,sub_category).size();
+        assertThat(size==2);
+
+    }
 }

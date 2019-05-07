@@ -40,7 +40,7 @@ public class ProductIntegrationTest {
         restTemplate.postForEntity("/products", TestProducts.getProducts().get(0),String.class);
 
         //act
-        ResponseEntity<Product[]> response = restTemplate.getForEntity("/products/Men", Product[].class);
+        ResponseEntity<Product[]> response = restTemplate.getForEntity("/products/categories/Men", Product[].class);
 
         //assert
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);

@@ -10,6 +10,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
+    String img;
     String name;
     String category;
     String sub_category;
@@ -17,8 +18,9 @@ public class Product {
     String size;
     int count;
 
-    public Product(String name,String category, String sub_category, double price, String size, int count) {
+    public Product(String name,String img,String category, String sub_category, double price, String size, int count) {
         this.name=name;
+        this.img=img;
         this.category = category;
         this.sub_category = sub_category;
         this.price = price;
@@ -29,6 +31,14 @@ public class Product {
 
     Product(){
 
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public Integer getId() {
