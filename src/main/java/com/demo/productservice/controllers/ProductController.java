@@ -33,7 +33,7 @@ public class ProductController {
     public void updateProductCount(@PathVariable Integer id,@PathVariable int qty){
          productService.updateProductCount(id,qty);
     }
-
+    @CrossOrigin("*")
     @GetMapping("/products")
     public List<Product> getAllProducts(){
         return productService.getAllProducts();

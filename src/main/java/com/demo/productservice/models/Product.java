@@ -8,37 +8,41 @@ import javax.persistence.Id;
 @Entity
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
-    String img;
     String name;
     String category;
     String sub_category;
     double price;
     String size;
     int count;
+    String image;
 
-    public Product(String name,String img,String category, String sub_category, double price, String size, int count) {
-        this.name=name;
-        this.img=img;
+    public Product(String name, String category, String sub_category, double price, String size, int count, String image) {
+
+        this.name = name;
         this.category = category;
         this.sub_category = sub_category;
         this.price = price;
         this.size = size;
         this.count = count;
+        this.image = image;
     }
 
-
-    Product(){
-
+    public Product(Integer id, String name, String category, String sub_category, double price, String size, int count, String image) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.sub_category = sub_category;
+        this.price = price;
+        this.size = size;
+        this.count = count;
+        this.image = image;
     }
 
-    public String getImg() {
-        return img;
-    }
+    public Product(){
 
-    public void setImg(String img) {
-        this.img = img;
+
     }
 
     public Integer getId() {
@@ -47,6 +51,14 @@ public class Product {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCategory() {
@@ -59,13 +71,6 @@ public class Product {
 
     public String getSub_category() {
         return sub_category;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getName() {
-        return name;
     }
 
     public void setSub_category(String sub_category) {
@@ -96,8 +101,11 @@ public class Product {
         this.count = count;
     }
 
+    public String getImage() {
+        return image;
+    }
 
-
-
-
+    public void setImage(String image) {
+        this.image = image;
+    }
 }
